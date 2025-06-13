@@ -116,7 +116,14 @@ export function Terminal() {
           onSubmit={handleSubmit}
           className="w-full"
         >
+          <label
+            htmlFor="input"
+            className="sr-only"
+          >
+            Input:
+          </label>
           <input
+            id="input"
             type="text"
             value={input}
             onChange={event => setInput(event.target.value)}
