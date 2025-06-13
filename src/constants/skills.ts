@@ -10,7 +10,7 @@ import {
   TestTube,
   FilePenLine,
   Atom,
-  Phone,
+  Smartphone,
   CodeXml,
   Wind,
   Brush,
@@ -78,7 +78,7 @@ export const skills = {
     },
     {
       name: 'REACT_NATIVE',
-      icon: Phone,
+      icon: Smartphone,
     },
     {
       name: 'VUE.JS',
