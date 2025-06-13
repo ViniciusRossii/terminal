@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import type { ReactNode, FormEvent } from 'react'
 import { Terminal as TerminalIcon } from 'lucide-react'
 
@@ -26,7 +26,6 @@ export function Terminal() {
   ])
 
   const [input, setInput] = useState('')
-  const terminalRef = useRef<HTMLDivElement>(null)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -64,26 +63,13 @@ export function Terminal() {
 
     if (input !== 'clear') {
       setCommands([
-        ...commands,
         { input, output, date: new Date().toISOString() },
+        ...commands,
       ])
     }
 
     setInput('')
-
-    scrollToBottom()
   }
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies:()
-  useEffect(() => {
-    scrollToBottom()
-  }, [commands])
-
-  const scrollToBottom = useCallback(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
-    }
-  }, [])
 
   return (
     <div className="border border-white/30 h-full rounded-md font-mono max-w-6xl mx-auto flex flex-col">
@@ -92,14 +78,11 @@ export function Terminal() {
         <span className="text-sm">rossi@developer ~</span>
       </div>
 
-      <div
-        className="flex-1 space-y-4 p-4 overflow-auto scroll-smooth"
-        ref={terminalRef}
-      >
+      <div className="flex-1 p-4 overflow-y-auto scroll-smooth flex flex-col-reverse">
         {commands.map(command => (
           <div
             key={command.date}
-            className="text-sm"
+            className="text-sm mt-4"
           >
             <div className="space-x-2">
               <span>$</span>
