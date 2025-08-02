@@ -1,14 +1,11 @@
-'use client'
-
-import { useState } from 'react'
-import type { ReactNode, FormEvent } from 'react'
 import { Terminal as TerminalIcon } from 'lucide-react'
-
-import { Welcome } from './sections/welcome'
-import { Skills } from './sections/skills'
-import { Experiences } from './sections/experiences'
+import type { FormEvent, ReactNode } from 'react'
+import { useState } from 'react'
 import { Contact } from './sections/contact'
+import { Experiences } from './sections/experiences'
 import { Help } from './sections/help'
+import { Skills } from './sections/skills'
+import { Welcome } from './sections/welcome'
 
 interface Command {
   input: string
@@ -81,8 +78,8 @@ export function Terminal() {
       <div className="flex-1 p-4 overflow-y-auto scroll-smooth flex flex-col-reverse">
         {commands.map(command => (
           <div
-            key={command.date}
             className="text-sm mt-4"
+            key={command.date}
           >
             <div className="space-x-2">
               <span>$</span>
@@ -96,21 +93,21 @@ export function Terminal() {
       <div className="p-2 border-t-1 border-t-white/30 flex gap-x-2">
         <span>$</span>
         <form
-          onSubmit={handleSubmit}
           className="w-full"
+          onSubmit={handleSubmit}
         >
           <label
-            htmlFor="input"
             className="sr-only"
+            htmlFor="input"
           >
             Input:
           </label>
           <input
+            className="outline-none w-full"
             id="input"
+            onChange={event => setInput(event.target.value)}
             type="text"
             value={input}
-            onChange={event => setInput(event.target.value)}
-            className="outline-none w-full"
           />
         </form>
       </div>

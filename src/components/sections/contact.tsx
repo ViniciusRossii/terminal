@@ -1,8 +1,8 @@
-import { Mail, MapPin, Linkedin, Github } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
 
 export function Contact() {
   return (
-    <div className='space-y-2'>
+    <div className="space-y-2">
       <div className="flex items-center gap-x-2">
         <Mail size={20} />
         <a href="mailto:viniciuslimarossi7@gmail.com">

@@ -17,7 +17,7 @@ export const commands = [
   },
   {
     command: 'clear',
-    description: 'Clear the terminal'
+    description: 'Clear the terminal',
   },
   {
     command: 'help',
